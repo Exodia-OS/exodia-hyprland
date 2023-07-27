@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Kill already running process
+_ps=(mako xfce-polkit)
+for _prs in "${_ps[@]}"; do
+	if [[ $(pidof "${_prs}") ]]; then
+		killall -9 "${_prs}"
+	fi
+done
+
+# Polkit agent
+/usr/bin/lxpolkit &
+# /usr/lib/xfce-polkit/xfce-polkit &
+
+# Set wallpaper
+swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/wallpaper.png &
+
+# Lauch notification daemon (mako)
+~/.config/hypr/scripts/notifications &
+
+# Launch statusbar (waybar)
+~/.config/hypr/waybar/launch_waybar.sh &
+
+# Changing themes/icons
+.config/hypr/scripts/gtkthemes &
