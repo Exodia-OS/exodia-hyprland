@@ -10,11 +10,12 @@ arch=('any')
 url="https://github.com/Exodia-OS/exodia-hyprland"
 license=('GPL')
 depends=(
-	'hyprland-git' 'waybar' 'swaybg'
-	'swayidle' 'swaylock' 'wlroots'
+	'hyprland-git' 'waybar-hyprland-git' 'swaybg'
+	'swayidle' 'swaylock-effects' 'wlroots'
 	'wl-clipboard' 'mako' 'grim' 'slurp'
-	'wf-recorder' 'yad' 'mpv' 'viewnior' 
+	'wf-recorder' 'mpv' 'viewnior' 'xdg-desktop-portal-hyprland'
 	'imagemagick' 'xfce-polkit' 'xorg-xwayland'
+	'hyprpicker'
 	)
 install=${pkgname}.install
 
