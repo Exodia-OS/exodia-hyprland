@@ -9,7 +9,6 @@ for _prs in "${_ps[@]}"; do
 done
 
 # Polkit agent
-#/usr/bin/lxpolkit &
 /usr/lib/xfce-polkit/xfce-polkit &
 
 # Set wallpaper
@@ -24,5 +23,3 @@ swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/wallpaper.png 
 # Changing themes/icons
 .config/hypr/scripts/gtkthemes &
 
-# motrix 
-#motrix &
