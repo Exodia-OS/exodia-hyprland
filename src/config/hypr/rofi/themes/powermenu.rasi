@@ -6,7 +6,7 @@
  */
 
 configuration {
-  font:                           "JetBrains Mono Medium 12";
+  font:                           "JetBrains mono Medium 14";
   disable-history:                false;
   click-to-exit: 					        true;
 }

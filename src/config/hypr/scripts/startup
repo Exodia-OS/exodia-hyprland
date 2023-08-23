@@ -9,21 +9,16 @@ for _prs in "${_ps[@]}"; do
 done
 
 # Polkit agent
-#/usr/bin/lxpolkit &
-/usr/lib/xfce-polkit/xfce-polkit &
-
-# Set wallpaper
-# exec-once = /usr/bin/wpaperd
-#swaybg --output '*' --mode fill --image ~/git/Anime-Wallpaper/Wallpapers/043.jpg &
+#xfce-polkit &
 
 # Lauch notification daemon (mako)
 ~/.config/hypr/scripts/notifications &
 
 # Launch statusbar (waybar)
-~/.config/hypr/waybar/launch_waybar.sh &
+~/.config/hypr/scripts/statusbar &
 
 # Changing themes/icons
-.config/hypr/scripts/gtkthemes &
+#~/.config/hypr/scripts/gtkthemes &
 
 # motrix 
 motrix &

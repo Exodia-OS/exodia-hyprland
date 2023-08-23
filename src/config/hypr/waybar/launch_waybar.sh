@@ -7,6 +7,6 @@ elif [ "$is_waybar_ServerExist" = "1" ]; then
   killall waybar
 fi
 
-SDIR="$HOME/.config/hypr/waybar"
+SDIR="~/.config/hypr/waybar/"
 
 waybar -c "$SDIR"/config -s "$SDIR"/style.css

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 swaylock --screenshots --clock --indicator-idle-visible \
 	--indicator-radius 100 \
 	--indicator-thickness 15 \

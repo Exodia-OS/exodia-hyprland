@@ -4,71 +4,71 @@ iDIR="$HOME/.config/hypr/mako/icons"
 
 # Get Volume
 get_volume() {
-    volume=$(pactl -- get-sink-volume @DEFAULT_SINK@ | head -n1 | awk -F ' ' '{print $5}')
+    volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | head -n1 | awk -F ' ' '{print $5}')
     echo "$volume"
 }
 
 # Get icons
 get_icon() {
-	vol="$(get_volume)"
-	current="${vol%%%}"
-	if [[ "$current" -eq "0" ]]; then
-		icon="$iDIR/volume-mute.png"
-	elif [[ ("$current" -ge "0") && ("$current" -le "30") ]]; then
-		icon="$iDIR/volume-low.png"
-	elif [[ ("$current" -ge "30") && ("$current" -le "60") ]]; then
-		icon="$iDIR/volume-mid.png"
-	elif [[ ("$current" -ge "60") && ("$current" -le "100") ]]; then
-		icon="$iDIR/volume-high.png"
-	fi
+    vol="$(get_volume)"
+    current="${vol%%%}"
+    if [[ "$current" -eq "0" ]]; then
+        icon="$iDIR/volume-mute.png"
+    elif [[ ("$current" -ge "0") && ("$current" -le "30") ]]; then
+        icon="$iDIR/volume-low.png"
+    elif [[ ("$current" -ge "30") && ("$current" -le "60") ]]; then
+        icon="$iDIR/volume-mid.png"
+    elif [[ ("$current" -ge "60") && ("$current" -le "100") ]]; then
+        icon="$iDIR/volume-high.png"
+    fi
 }
 
 # Notify
 notify_user() {
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon" "Volume : $(get_volume)"
+    notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon" "Volume : $(get_volume)"
 }
 
 # Increase Volume
 inc_volume() {
-	pactl set-sink-volume @DEFAULT_SINK@ +10%
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+ -l 1.2
 }
 
 # Decrease Volume
 dec_volume() {
-  pactl set-sink-volume @DEFAULT_SINK@ -10%
+  wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-
 }
 
 # Toggle Mute
 toggle_mute() {
-	pactl get-sink-volume | grep '\[on\]' &>/dev/null
-	if [[ "$?" == 0 ]]; then
-		pactl set-sink-mute @DEFAULT_SINK@ toggle
-	else
-		pactl set-sink-mute @DEFAULT_SINK@ toggle
-	fi
+    pactl get-sink-volume | grep '\[on\]' &>/dev/null
+    if [[ "$?" == 0 ]]; then
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle 
+    else
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    fi
 }
 
 # # Toggle Mic
 toggle_mic() {
-	amixer get Capture | grep '\[on\]' &>/dev/null
-	if [[ "$?" == 0 ]]; then
-		amixer -D pulse sset Capture toggle
-	else
-		amixer -D pulse sset Capture toggle
-	fi
+    amixer get Capture | grep '\[on\]' &>/dev/null
+    if [[ "$?" == 0 ]]; then
+        wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle 
+    else
+        wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+    fi
 }
 
 # Execute accordingly
 if [[ "$1" == "--get" ]]; then
-	get_volume
+    get_volume
 elif [[ "$1" == "--inc" ]]; then
-	inc_volume
+    inc_volume
 elif [[ "$1" == "--dec" ]]; then
-	dec_volume
+    dec_volume
 elif [[ "$1" == "--toggle" ]]; then
-	toggle_mute
+    toggle_mute
 elif [[ "$1" == "--toggle-mic" ]]; then
-	toggle_mic
+    toggle_mic
 else
-	get_volume
+    get_volume
 fi
