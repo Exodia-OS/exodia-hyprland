@@ -9,7 +9,7 @@ for _prs in "${_ps[@]}"; do
 done
 
 # Polkit agent
-#xfce-polkit &
+xfce-polkit &
 
 # Lauch notification daemon (mako)
 ~/.config/hypr/scripts/notifications &
@@ -21,4 +21,4 @@ done
 #~/.config/hypr/scripts/gtkthemes &
 
 # motrix 
-motrix &
+#motrix &
