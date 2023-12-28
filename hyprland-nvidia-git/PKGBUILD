@@ -1,0 +1,38 @@
+#
+# Maintainer: Mahmoud Mohamed (00xWolf) <mmsaeed509@gmail.com> , <https://github.com/mmsaeed509>
+#
+
+pkgname=exodia-hyprland
+pkgver=1.0
+pkgrel=1
+pkgdesc="Hyprland config For Exodia OS"
+arch=('any')
+url="https://github.com/Exodia-OS/exodia-hyprland"
+license=('GPL')
+depends=(
+	'hyprland-nvidia-git' 'waybar-hyprland-git' 'swaybg'
+	'swayidle' 'swaylock-effects' 'wlroots'
+	'wl-clipboard' 'mako' 'grim' 'slurp'
+	'wf-recorder' 'mpv' 'viewnior' 'hyprpicker'
+	'imagemagick' 'xfce-polkit' 'xorg-xwayland'
+)
+
+install=${pkgname}.install
+
+prepare() {
+
+	cp -af ../config/. ${srcdir}
+	
+}
+
+package() {
+
+	local CONFIG_DIR=${pkgdir}/etc/skel/.config
+	local HYPR_DIR=${CONFIG_DIR}/hypr
+
+	mkdir -p "${CONFIG_DIR}" "${HYPR_DIR}"
+
+	cp -r ${srcdir}/kitty	"${HYPR_DIR}"
+	cp -r ${srcdir}/hypr/*	"${HYPR_DIR}"
+
+}

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+#####################################
+#                                   #
+#    GitHub    : @nahian-adnan     #
+#  﫥 Copyright : Exodia OS         #
+#                                   #
+#####################################
+
+rofi -dmenu -i -no-fixed-num-lines -p "Are You Sure? : " \
+	-theme ~/.config/rofi/themes/confirm.rasi

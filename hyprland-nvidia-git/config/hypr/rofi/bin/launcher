@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+#####################################
+#                                   #
+#    GitHub    : @nahian-adnan     #
+#  﫥 Copyright : Exodia OS         #
+#                                   #
+#####################################
+
+DIR="$HOME/.config/hypr/"
+
+rofi -show drun -modi run,drun,filebrowser -theme "$DIR"/rofi/themes/launcher.rasi

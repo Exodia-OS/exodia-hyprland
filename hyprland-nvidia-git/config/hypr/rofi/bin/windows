@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+#####################################
+#                                   #
+#    GitHub    : @nahian-adnan     #
+#  﫥 Copyright : Exodia OS         #
+#                                   #
+#####################################
+
+DIR="$HOME/.config/hypr/"
+
+rofi -no-lazy-grab -show window -theme "$DIR"/rofi/themes/window.rasi
